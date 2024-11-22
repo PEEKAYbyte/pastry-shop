@@ -1,38 +1,247 @@
-.App {
-  text-align: center;
+/* General Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar .logo img {
+  height: 50px;
+  width: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.menu-items {
+  display: flex;
+  list-style: none;
+}
+
+.menu-items ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.search-button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.order-button {
+  background-color: #ff6347; /* Different color for order button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.order-button:hover {
+  background-color: #e5533b;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-items {
+    display: none;
+    width: 100%;
+  }
+
+  .menu-items.open {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .menu-items ul {
+    display: block;
+    width: 100%;
+  }
+
+  .menu-items a {
+    display: block;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
+/* about.js css */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* General styles for About page */
+.about-page {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.about-header {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #ff6347; /* Pastry shop brand color */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.about-header h1 {
+  font-size: 3rem;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.about-header p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.about-text {
+  max-width: 800px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.about-image {
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+}
+
+.poster-container {
+  text-align: center;
+}
+
+.cake-poster {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.cake-poster:hover {
+  transform: scale(1.05);
+}
+
+/* Footer Styles */
+.about-footer {
+  text-align: center;
+  background-color: #ff6347;
+  color: white;
+  padding: 20px;
+  font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-header p {
+    font-size: 1rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-image {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .cake-poster {
+    width: 90%;
+    margin-top: 20px;
   }
 }
