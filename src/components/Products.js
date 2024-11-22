@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Products = () => {
   //products: An array to store the list of products.
@@ -13,8 +13,18 @@ const Products = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [editProductName, setEditProductName] = useState("");
-  //handleAddProduct Function: Adds the new product to the products array and resets the form.
+ 
+ // useeffect hook for data store in localstorage
 
+ useEffect(()=>{
+  const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+  setProducts(storedProducts);
+ },[]);
+ 
+ 
+ 
+ 
+  //handleAddProduct Function: Adds the new product to the products array and resets the form.
   const handleAddProduct = (event) => {
     // prevent default form submission behavior
     event.preventDefault();
@@ -23,7 +33,11 @@ const Products = () => {
       setError("Product name cannot be empty");
       return;
     }
-    setProducts([...products, newProductName]);
+    // setProducts([...products, newProductName]);
+    const updatedProducts =[...products,newProductName];
+    setProducts(updatedProducts);
+    localStorage.setItem('products',JSON.stringify(updatedProducts));
+    
     setNewProductName("");
     setShowAddProductForm(false);
     setError("");
@@ -46,6 +60,8 @@ const Products = () => {
     const updatedProducts = [...products];
     updatedProducts[currentProduct] = editProductName;
     setProducts(updatedProducts);
+    localStorage.setItem('products',JSON.stringify(updatedProducts));
+    
     setIsEditing(false);
     setCurrentProduct(null);
     setEditProductName("");
@@ -65,11 +81,13 @@ const Products = () => {
       ...products.slice(index + 1),
     ];
     setProducts(updatedProducts);
+    localStorage.setItem('products',JSON.stringify(updatedProducts));
   };
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}> Pastry Shop Product </h1>
+      <h3> product add, edit,delete using without local storage and backend</h3>
 
       <button onClick={() => setShowAddProductForm(true)}>
         Add New Product
